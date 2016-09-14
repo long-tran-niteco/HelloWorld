@@ -135,6 +135,7 @@
 				68BC54161D86A7FA00556A44 /* Sources */,
 				68BC54171D86A7FA00556A44 /* Frameworks */,
 				68BC54181D86A7FA00556A44 /* Resources */,
+				68D8DD381D8906B2003136D0 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -250,6 +251,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		68D8DD381D8906B2003136D0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "xcodebuild -workspace <AppName>/<AppName>.xcworkspace -scheme <PrimarySchemeName> archive -archivePath <AppName>.xcarchive\nxcodebuild -exportArchive -exportFormat ipa -archivePath <AppName>.xcarchive -exportPath <AppName> -exportProvisioningProfile <AcceptanceProvisioningProfileName>\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		68BC54161D86A7FA00556A44 /* Sources */ = {
@@ -484,6 +502,7 @@
 				68BC54441D86A7FA00556A44 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		68BC54451D86A7FA00556A44 /* Build configuration list for PBXNativeTarget "HelloWorldTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +511,7 @@
 				68BC54471D86A7FA00556A44 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		68BC54481D86A7FA00556A44 /* Build configuration list for PBXNativeTarget "HelloWorldUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +520,7 @@
 				68BC544A1D86A7FA00556A44 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
