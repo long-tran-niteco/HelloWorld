@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="fastlane.lanes">
+    
+      
+      <testcase classname="fastlane.lanes" name="0: Verifying required fastlane version" time="0.000465">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.000211">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="2: match" time="5.739154">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="3: /usr/libexec/PlistBuddy -c 'Set CFBundleVersion 2' '../HelloWorld/Info.plist'" time="0.006874">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="4: gym" time="25.467612">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="5: crashlytics" time="19.078872">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="6: upload_symbols_to_crashlytics" time="1.547849">
+        
+      </testcase>
+    
+  </testsuite>
+</testsuites>

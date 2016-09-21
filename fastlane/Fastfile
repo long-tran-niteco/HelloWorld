@@ -1,0 +1,100 @@
+# Customise this file, documentation can be found here:
+# https://github.com/fastlane/fastlane/tree/master/fastlane/docs
+# All available actions: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Actions.md
+# can also be listed using the `fastlane actions` command
+
+# Change the syntax highlighting to Ruby
+# All lines starting with a # are ignored when running `fastlane`
+
+# If you want to automatically update fastlane if a new version is available:
+# update_fastlane
+
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+fastlane_version "1.103.0"
+
+default_platform :ios
+
+MAIN_INFOPLIST = "../HelloWorld/Info.plist"
+
+
+platform :ios do
+  before_all do
+    # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
+    
+    
+  end
+
+  desc "Runs all the tests"
+  lane :test do
+    scan
+  end
+
+  desc "Submit a new Beta Build to Apple TestFlight"
+  desc "This will also make sure the profile is up to date"
+  lane :beta do
+    match(app_identifier: "se.niteco.helloworld", type: "development", readonly: true)
+
+    set_build_number(
+      3
+    )
+
+    # There's a bug in the new Xcode 7 API that causes problems. This forces use of the old API.
+    gym(
+      use_legacy_build_api: false,
+      scheme: 'HelloWorld',
+      archive_path: "./gym_archive"
+    )
+
+    # Upload the build to Crashlytics.
+    crashlytics(
+      api_token: "d241e3297a82297479a8c29751465eea577f9772",
+      build_secret: "104c0cae8d45fe16fa0b74bc56b1fad37713b18519530213aae8a7cbd7cb389a",
+      notes: 'iOS Build: 2\n',
+      groups: ["ci-test"]
+    )
+
+    upload_symbols_to_crashlytics
+  end
+
+  desc "Deploy a new version to the App Store"
+  lane :release do
+    # match(type: "appstore")
+    # snapshot
+    gym # Build your app - more options available
+    deliver(force: true)
+    # frameit
+  end
+
+  # You can define as many lanes as you want
+
+  after_all do |lane|
+    # This block is called, only if the executed lane was successful
+
+    # slack(
+    #   message: "Successfully deployed new App Update."
+    # )
+  end
+
+  error do |lane, exception|
+    # slack(
+    #   message: exception.message,
+    #   success: false
+    # )
+  end
+
+def set_build_number(build_number = nil)
+    raise if build_number.nil?
+    puts "Setting build number to #{build_number}"
+    Actions.lane_context[SharedValues::BUILD_NUMBER] = build_number
+    sh("/usr/libexec/PlistBuddy -c 'Set CFBundleVersion #{build_number}' '#{MAIN_INFOPLIST}'")
+  end
+
+end
+
+
+# More information about multiple platforms in fastlane: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Platforms.md
+# All available actions: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Actions.md
+
+# fastlane reports which actions are used
+# No personal data is recorded. Learn more at https://github.com/fastlane/enhancer
