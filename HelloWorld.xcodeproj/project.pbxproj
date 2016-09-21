@@ -264,7 +264,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "xcodebuild -project HelloWorld.xcodeproj -scheme HelloWorld archive -archivePath HelloWorld.xcarchive\n\nxcodebuild -exportArchive -exportFormat ipa -archivePath HelloWorld.xcarchive -exportPath HelloWorld -exportProvisioningProfile \"Niteco_Wildcard_dev\"";
+			shellScript = "";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
