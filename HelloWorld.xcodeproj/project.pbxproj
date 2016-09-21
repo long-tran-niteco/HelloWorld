@@ -264,7 +264,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "xcodebuild -workspace <AppName>/<AppName>.xcworkspace -scheme <PrimarySchemeName> archive -archivePath <AppName>.xcarchive\nxcodebuild -exportArchive -exportFormat ipa -archivePath <AppName>.xcarchive -exportPath <AppName> -exportProvisioningProfile <AcceptanceProvisioningProfileName>\n";
+			shellScript = "xcodebuild -project HelloWorld.xcodeproj -scheme HelloWorld archive -archivePath HelloWorld.xcarchive\n\nxcodebuild -exportArchive -exportFormat ipa -archivePath HelloWorld.xcarchive -exportPath HelloWorld -exportProvisioningProfile \"Niteco_Wildcard_dev\"";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -423,6 +423,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = niteco.HelloWorld;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "e02d42fc-d7c5-446d-a89e-42d43613c0f1";
 			};
 			name = Debug;
 		};
@@ -434,6 +435,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = niteco.HelloWorld;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "e02d42fc-d7c5-446d-a89e-42d43613c0f1";
 			};
 			name = Release;
 		};
