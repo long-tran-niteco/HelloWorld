@@ -36,7 +36,7 @@ platform :ios do
     match(app_identifier: "se.niteco.helloworld", type: "development", readonly: true)
 
     set_build_number(
-      4
+      5
     )
 
     # There's a bug in the new Xcode 7 API that causes problems. This forces use of the old API.
@@ -50,7 +50,7 @@ platform :ios do
     crashlytics(
       api_token: "d241e3297a82297479a8c29751465eea577f9772",
       build_secret: "104c0cae8d45fe16fa0b74bc56b1fad37713b18519530213aae8a7cbd7cb389a",
-      notes: 'iOS Build: 2\n',
+      notes: 'iOS Build: 5\n',
       groups: ["ci-test"]
     )
 
