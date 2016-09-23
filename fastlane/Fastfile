@@ -68,7 +68,8 @@ platform :ios do
       groups: ["ci-test"]
     )
 
-    upload_symbols_to_crashlytics
+    #Cleanup Build Artifacts
+    clean_build_artifacts
   end
 
   desc "Deploy a new version to the App Store"
