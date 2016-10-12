@@ -20,7 +20,7 @@ MAIN_INFOPLIST = "../HelloWorld/Info.plist"
 
 platform :ios do
   before_all do
-    # ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
+     ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
     
     
   end
