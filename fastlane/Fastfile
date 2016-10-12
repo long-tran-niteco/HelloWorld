@@ -94,17 +94,14 @@ platform :ios do
 
   after_all do |lane|
     # This block is called, only if the executed lane was successful
-
-    slack(
-      message: "Successfully deployed new App Update."
-    )
+    notification(subtitle: "Succeeded", message: "Lane #{lane} completed successfully!")
+    
   end
 
   error do |lane, exception|
-    slack(
-    message: exception.message,
-    success: false
-    )
+    clean_build_artifacts
+    notify("Lane #{lane} failed to complete.")
+
   end
 
 #Helper functions
