@@ -71,6 +71,8 @@ platform :ios do
       success: true,
       channel: "#continuous-deployment",
       payload: {
+        'Build version' => get_version_number,
+        'Build number' => new_build_number,
         'Last Commit Message' => last_git_commit[:message],
         'Author' => last_git_commit[:author]
       },
@@ -94,7 +96,7 @@ platform :ios do
 
   after_all do |lane|
     # This block is called, only if the executed lane was successful
-    notification(subtitle: "Succeeded", message: "Lane #{lane} completed successfully!")
+    #notification(subtitle: "Succeeded", message: "Lane #{lane} completed successfully!")
     
   end
 
