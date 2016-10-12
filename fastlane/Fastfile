@@ -45,11 +45,7 @@ platform :ios do
     match(app_identifier: "se.niteco.helloworld", type: "development", readonly: true)
 
     #run unit test before make build
-    scan(
-        scheme:"HelloWorld",
-        devices:["iPhone 6s","iPad Air"],
-        clean
-    )
+    scan --scheme "HelloWorld" --device "iPhone 6" --clean
 
     set_build_number(
       new_build_number
