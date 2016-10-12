@@ -8,6 +8,7 @@
 
 import XCTest
 
+
 @testable import HelloWorld
 
 class HelloWorldTests: XCTestCase {
@@ -32,6 +33,11 @@ class HelloWorldTests: XCTestCase {
         self.measure {
             // Put the code you want to measure the time of here.
         }
+    }
+    
+    func testLogic(){
+        XCTAssertEqual(ViewController().add(a: 1,b: 2), 3)
+        
     }
     
 }
