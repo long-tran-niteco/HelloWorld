@@ -20,7 +20,7 @@ MAIN_INFOPLIST = "../HelloWorld/Info.plist"
 
 platform :ios do
   before_all do
-    # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
+    # ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
     
     
   end
@@ -45,7 +45,7 @@ platform :ios do
     match(app_identifier: "se.niteco.helloworld", type: "development", readonly: true)
 
     #run unit test before make build
-    scan(scheme:"HelloWorld",devices:["iPhone 6s","iPad Air"],clean:true)
+    scan(scheme:"HelloWorld",devices:["iPhone 6s","iPad Air"],clean:true,skip_slack:false)
 
     set_build_number(
       new_build_number
