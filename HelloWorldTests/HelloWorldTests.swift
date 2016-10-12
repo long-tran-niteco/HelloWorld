@@ -36,7 +36,7 @@ class HelloWorldTests: XCTestCase {
     }
     
     func testLogic(){
-        XCTAssertEqual(ViewController().add(a: 1,b: 2), 4)
+        XCTAssertEqual(ViewController().add(a: 1,b: 2), 3)
         
     }
     
