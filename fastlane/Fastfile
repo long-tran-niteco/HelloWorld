@@ -66,6 +66,17 @@ platform :ios do
       groups: ["ci-test"]
     )
 
+    slack(
+      message: "iOS New Development Build available for download :rocket:",
+      success: true,
+      channel: "#continuous-deployment",
+      payload: {
+        'Last Commit Message' => last_git_commit[:message],
+        'Author' => last_git_commit[:author]
+      },
+      default_payloads: []
+    )
+
     #Cleanup Build Artifacts
     clean_build_artifacts
   end
@@ -84,16 +95,16 @@ platform :ios do
   after_all do |lane|
     # This block is called, only if the executed lane was successful
 
-    # slack(
-    #   message: "Successfully deployed new App Update."
-    # )
+    slack(
+      message: "Successfully deployed new App Update."
+    )
   end
 
   error do |lane, exception|
-    # slack(
-    #   message: exception.message,
-    #   success: false
-    # )
+    slack(
+    message: exception.message,
+    success: false
+    )
   end
 
 #Helper functions
